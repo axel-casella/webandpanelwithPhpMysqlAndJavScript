@@ -1,0 +1,139 @@
+DROP DATABASE IF EXISTS essen;
+CREATE DATABASE IF NOT EXISTS essen;
+USE essen;
+
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+
+--
+-- Estructura de tabla para la tabla `colores`
+--
+
+CREATE TABLE `colores` (
+  `id_color` int(10) UNSIGNED NOT NULL,
+  `color` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `colores`
+--
+
+INSERT INTO `colores` (`id_color`, `color`) VALUES
+(1, 'Aqua'),
+(2, 'Terra'),
+(3, 'Marsala');
+
+--
+-- Estructura de tabla para la tabla `categorias`
+--
+
+CREATE TABLE `categorias` (
+  `id_categoria` int(10) UNSIGNED NOT NULL,
+  `categoria` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `categorias`
+--
+
+INSERT INTO `categorias` (`id_categoria`, `categoria`) VALUES
+(1, 'Cacerola'),
+(2, 'Sartén'),
+(3, 'Bifera');
+
+--
+-- Estructura de tabla para la tabla `productos`
+--
+
+CREATE TABLE `productos` (
+  `id_producto` int(10) UNSIGNED NOT NULL,
+  `imagen` LONGTEXT NOT NULL DEFAULT '',
+  `nombre` varchar(45) NOT NULL DEFAULT '',
+  `descripcion` LONGTEXT DEFAULT NULL,
+  `precio` decimal(10,2) NOT NULL DEFAULT 0.00,
+  `id_color` int(10) UNSIGNED DEFAULT 0,
+	`id_categoria` int(10) UNSIGNED DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+--
+-- Volcado de datos para la tabla `productos`
+--
+
+INSERT INTO `productos` VALUES (1, 'imagenes/cacerolas/01aqua.jpg', 'Cacerola 18cm', 'Estas Cacerolas con mango son ideales para preparaciones de platos pequeños en familias entre 2 y 3 integrantes o como complemento de piezas más grandes ya que en ellas se pueden realizar rellenos o salsas de forma práctica. Poseen una pequeña base, paredes laterales altas y mango lo que facilita el manejo de las piezas. Junto a la Sartén y la Cacerola de 24 cm, permiten resolver cocciones que van desde una entrada o un plato principal hasta un postre. Su uso es muy versátil ya que permite cocinar panes, tortas, carnes, cremas y salsas. Además tienen la opción de incorporar un complemento: Savarín: Para la cocción de flanes, budines, soufflés, etc.', 13550, 1, 1);
+INSERT INTO `productos` VALUES (2, 'imagenes/cacerolas/02aqua.jpg', 'Sartén 24cm', 'En esta Sartén podrá realizar recetas para compartir con 4 o 5 comensales. En conjunto con la Cacerola con asas de 24 cm (diámetro) y la Bifera, son un equipo ideal para satisfacer las necesidades de la cocina de matrimonios jóvenes con hijos pequeños, ya que sus capacidades son óptimas para alimentar a una familia promedio de 4 integrantes. Podrá lucirse con la cocción de: tortas, tartas, carnes, pescados, verduras rellenas, salsas, etc.', 17600, 1, 2);
+INSERT INTO `productos` VALUES (3, 'imagenes/cacerolas/03aqua.jpg', 'Cacerola 24cm', 'Estas Cacerolas son las más vendidas de nuestra línea de productos y gracias a los complementos que hemos desarrollado, permiten disfrutar de todas las funciones y beneficios de las piezas Essen. Son una excelente opción ya que se adaptan a una familia de entre 4 y 5 integrantes resolviendo absolutamente todas las posibilidades de preparaciones y cocciones tanto dulces como saladas: desde tortas a panes, carnes, cazuelas, guisados y sopas, etc. Además tienen la opción de incorporar complementos', 18000, 1, 1);
+INSERT INTO `productos` VALUES (4, 'imagenes/cacerolas/04aqua.jpg', 'Cuadrada 30cm', 'Diseño y estilo en un solo producto. Su capacidad se destaca ya que permite desarrollar cocciones para entre 6 y 8 comensales. Su forma cuadrada permite acomodar perfectamente porciones grandes de carne y guarniciones de forma muy sencilla. Además, por la amplitud de sus medidas facilita la manipulación de los ingredientes durante la cocción. Incorporando las Budineras para cacerolas cuadradas,  podrás preparar  budines, terrinas, panes etc. de forma elegante, rica y fácil.', 25000, 1, 1);
+INSERT INTO `productos` VALUES (5, 'imagenes/cacerolas/05aqua.jpg', 'Sartén 31cm', 'Esta sartén tiene el tamaño ideal para realizar grandes porciones, sobre todo para recetas de tartas, tortillas, verduras rellenas y paellas. Su diseño facilita los desmoldes y las asas fijas ayudan a manejar el producto con mayor seguridad durante las cocciones. Complementando esta sartén con la cacerola con asas de 24cm y la bifera con asas,  tendrá la oportunidad de contar con piezas de cocina para preparaciones importantes de hasta 5 o 6 adultos.', 24000, 1, 2);
+INSERT INTO `productos` VALUES (6, 'imagenes/cacerolas/06aqua.jpg', 'Bifera con asas', '¡Exclusivo diseño! Optimiza la distribución del calor logrando una cocción pareja y un sellado crocante. Esta bífera ha sido pensada para realizar cocciones para 4 comensales. Está recubierta por antiadherente lo que facilita su limpieza y sus paredes laterales son más altas lo que minimiza el salpicado. Su uso ideal es para la cocción de carnes, grillado de verduras, arrollados de queso, hamburguesas, brochetes, carnes blancas, etc. Es una pieza fundamental en la cocina de todos los días y se complementa perfectamente con la sartén con mango de 24 cm y la cacerola con asas 24 cm.', 16500, 1, 3);
+INSERT INTO `productos` VALUES (7, 'imagenes/cacerolas/01terra.jpg', 'Cacerola 18cm', 'Estas Cacerolas con mango son ideales para preparaciones de platos pequeños en familias entre 2 y 3 integrantes o como complemento de piezas más grandes ya que en ellas se pueden realizar rellenos o salsas de forma práctica. Poseen una pequeña base, paredes laterales altas y mango lo que facilita el manejo de las piezas. Junto a la Sartén y la Cacerola de 24 cm, permiten resolver cocciones que van desde una entrada o un plato principal hasta un postre. Su uso es muy versátil ya que permite cocinar panes, tortas, carnes, cremas y salsas.', 13500, 2, 1);
+INSERT INTO `productos` VALUES (8, 'imagenes/cacerolas/02terra.jpg', 'Sartén 24cm', 'En esta Sartén podrá realizar recetas para compartir con 4 o 5 comensales. En conjunto con la Cacerola con asas de 24 cm (diámetro) y la Bifera, son un equipo ideal para satisfacer las necesidades de la cocina de matrimonios jóvenes con hijos pequeños, ya que sus capacidades son óptimas para alimentar a una familia promedio de 4 integrantes. Podrá lucirse con la cocción de: tortas, tartas, carnes, pescados, verduras rellenas, salsas, etc.', 17600, 2, 2);
+INSERT INTO `productos` VALUES (9, 'imagenes/cacerolas/03terra.jpg', 'Cacerola 24cm', 'Estas Cacerolas son las más vendidas de nuestra línea de productos y gracias a los complementos que hemos desarrollado, permiten disfrutar de todas las funciones y beneficios de las piezas Essen. Son una excelente opción ya que se adaptan a una familia de entre 4 y 5 integrantes resolviendo absolutamente todas las posibilidades de preparaciones y cocciones tanto dulces como saladas: desde tortas a panes, carnes, cazuelas, guisados y sopas, etc.', 18300, 2, 1);
+INSERT INTO `productos` VALUES (10, 'imagenes/cacerolas/04terra.jpg', 'Cuadrada 30cm', 'Diseño y estilo en un solo producto. Su capacidad se destaca ya que permite desarrollar cocciones para entre 6 y 8 comensales. Su forma cuadrada permite acomodar perfectamente porciones grandes de carne y guarniciones de forma muy sencilla. Además, por la amplitud de sus medidas facilita la manipulación de los ingredientes durante la cocción. Incorporando las Budineras para cacerolas cuadradas,  podrás preparar  budines, terrinas, panes etc. de forma elegante, rica y fácil.', 25000, 2, 1);
+INSERT INTO `productos` VALUES (11, 'imagenes/cacerolas/05terra.jpg', 'Sartén 31cm', 'Esta sartén tiene el tamaño ideal para realizar grandes porciones, sobre todo para recetas de tartas, tortillas, verduras rellenas y paellas. Su diseño facilita los desmoldes y las asas fijas ayudan a manejar el producto con mayor seguridad durante las cocciones. Complementando esta sartén con la cacerola con asas de 24cm y la bifera con asas, tendrá la oportunidad de contar con piezas de cocina para preparaciones importantes de hasta 5 o 6 adultos.', 24000, 2, 2);
+INSERT INTO `productos` VALUES (12, 'imagenes/cacerolas/06terra.jpg', 'Bifera con asas', '¡Exclusivo diseño! Optimiza la distribución del calor logrando una cocción pareja y un sellado crocante. Esta bífera ha sido pensada para realizar cocciones para 4 comensales. Está recubierta por antiadherente lo que facilita su limpieza y sus paredes laterales son más altas lo que minimiza el salpicado. Su uso ideal es para la cocción de carnes, grillado de verduras, arrollados de queso, hamburguesas, brochetes, carnes blancas, etc. Es una pieza fundamental en la cocina de todos los días y se complementa perfectamente con la sartén con mango de 24 cm y la cacerola con asas 24 cm.', 24000, 2, 3);
+INSERT INTO `productos` VALUES (13, 'imagenes/cacerolas/01marsala.jpg', 'Sartén 24cm', 'En esta Sartén podrá realizar recetas para compartir con 4 o 5 comensales. En conjunto con la Cacerola con asas de 24 cm (diámetro) y la Bifera, son un equipo ideal para satisfacer las necesidades de la cocina de matrimonios jóvenes con hijos pequeños, ya que sus capacidades son óptimas para alimentar a una familia promedio de 4 integrantes.', 17600, 3, 2);
+INSERT INTO `productos` VALUES (14, 'imagenes/cacerolas/02marsala.jpg', 'Cuadrada 30cm', 'Esta pieza ha sido pensada para mantener un exacto equilibrio entre diseño y estilo. Su capacidad de cocción se destaca ya que permite desarrollar cocciones para entre 6 y 8 comensales. Su forma cuadrada permite acomodar perfectamente porciones grandes de carne y sus guarniciones de forma muy sencilla. Además, por la amplitud de sus medidas facilita la manipulación de los ingredientes durante la cocción. Es ideal para la preparación de: Tortillas, tortas, tartas, presas de pollo, pescados, carnes rojas, verduras rellenas, salsas, canelones, pastas, etc.', 25000, 3, 1);
+INSERT INTO `productos` VALUES (15, 'imagenes/cacerolas/03marsala.jpg', 'Cacerola 24cm', 'Estas Cacerolas son las más vendidas de nuestra línea de productos y gracias a los complementos que hemos desarrollado, permiten disfrutar de todas las funciones y beneficios de las piezas Essen. Son una excelente opción ya que se adaptan a una familia de entre 4 y 5 integrantes resolviendo absolutamente todas las posibilidades de preparaciones y cocciones tanto dulces como saladas: desde tortas a panes, carnes, cazuelas, guisados y sopas, etc. Además tienen la opción de incorporar complementos.', 18300, 3, 1);
+INSERT INTO `productos` VALUES (16, 'imagenes/cacerolas/04marsala.jpg', 'Cacerola 18cm', 'Estas Cacerolas con mango son ideales para preparaciones de platos pequeños en familias entre 2 y 3 integrantes o como complemento de piezas más grandes ya que en ellas se pueden realizar rellenos o salsas de forma práctica. Poseen una pequeña base, paredes laterales altas y mango lo que facilita el manejo de las piezas. Junto a la Sartén y la Cacerola de 24 cm, permiten resolver cocciones que van desde una entrada o un plato principal hasta un postre. Su uso es muy versátil ya que permite cocinar panes, tortas, carnes, cremas y salsas. Además tienen la opción de incorporar un complemento: Savarín.', 13500, 3, 1);
+INSERT INTO `productos` VALUES (17, 'imagenes/cacerolas/05marsala.jpg', 'Sartén 30 cm', 'Esta sartén tiene el tamaño ideal para realizar grandes porciones, sobre todo para recetas de tartas, tortillas, verduras rellenas y paellas. Su diseño facilita los desmoldes y las asas fijas ayudan a manejar el producto con mayor seguridad durante las cocciones. Complementando esta sartén con la cacerola con asas de 28 cm y la bifera grande, tendrá la oportunidad de contar con piezas de cocina para preparaciones importantes de hasta 5 o 6 adultos.', 24000, 3, 2);
+INSERT INTO `productos` VALUES (18, 'imagenes/cacerolas/06marsala.jpg', 'Bifera', '¡Exclusivo diseño! Optimiza la distribución del calor logrando una cocción pareja y un sellado crocante. Está recubierta por antiadherente lo que facilita su limpieza y sus paredes laterales son más altas lo que minimiza el salpicado. Su uso ideal es para la cocción de carnes, grillado de verduras, arrollados de queso, hamburguesas, brochetes, carnes blancas, etc. Es una pieza fundamental en la cocina de todos los días y se complementa perfectamente con la sartén con mango de 24 cm y la cacerola con asas 24 cm .', 18000, 3, 3);
+INSERT INTO `productos` VALUES (19, 'imagenes/cacerolas/07marsala.jpg', 'Cacerola 33cm', 'Esta es la olla más grande de la línea Essen. Permite desarrollar cocciones para hasta 10 comensales. Es ideal para la cocción de: pastas, guisados, consomé, salsas, presas de pollo, cazuelas, pescados, etc.', 30000, 3, 1);
+INSERT INTO `productos` VALUES (20, 'imagenes/cacerolas/08marsala.jpg', 'Cacerola 28cm', 'Pieza de importante tamaño, ideal para familias numerosas de 5 a 6 personas. Es una cacerola altamente indicada para la cocción de tortas, tartas, presas de pollo, pescados, salsas, etc. Ha sido desarrollada en conjunto con una serie de complementos, que permiten el correcto aprovechamiento de todas las funciones de nuestras cacerolas: Savarín: Para la cocción de flanes, budines, soufflés, etc.', 24000, 3, 1);
+INSERT INTO `productos` VALUES (21, 'imagenes/cacerolas/09marsala.jpg', 'Cacerola 20cm', 'Una medida que le permitirá realizar, de forma, rápida, fácil, sana, los platos más variados, pensada para una familia de 1 ó 2 adultos y hasta 2 niños pequeños. Junto a la bifera chica, sartén de 20 o 22 cm (diámetro), resultan aliados básicos para realizar todas las comidas de forma práctica, rica y saludable. Es una de las cacerolas más vendidas de nuestra línea.Para la cocción de: tortas, panes, presas de pollo, pescados, salsas, etc.', 19000, 3, 1);
+INSERT INTO `productos` VALUES (22, 'imagenes/cacerolas/10marsala.jpg', 'Sartén 28cm', 'Estas sartenes ofrecen un volumen considerable, permitiendo la realización de platos y cocciones para familias entre 5 y 6 integrantes. El diseño facilita los desmoldes y las asas fijas ayudan a manejar el producto con mayor seguridad durante las cocciones. Complementando cualquiera de estas sartenes con la cacerola con asas de 28 cm y la bifera grande, tendrá la oportunidad de contar con piezas de cocina para preparaciones importantes de hasta 5 o 6 adultos.', 24500, 3, 2);
+INSERT INTO `productos` VALUES (23, 'imagenes/cacerolas/11marsala.jpg', 'Sartén 20cm', 'Estas sartenes son ideales para hogares de 1 ó 2 personas. Son las piezas básicas para descubrir la cocina práctica, rica y saludable que permite Essen. En conjunto con la cacerola con asas de 20 ó 22 cm y la bifera, son ideales para resolver las comidas de todos los días. Son piezas ideales para la cocción de: Tortillas, omelettes, tortas, tartas, presas de pollo, pizzetas, pescados, verduras rellenas, salsas, etc.', 17500, 3, 2);
+
+--
+-- Estructura de tabla para la tabla `usuarios`
+--
+DROP TABLE IF EXISTS `usuarios`;
+CREATE TABLE `usuarios`  (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `email` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `password` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE INDEX `email`(`email`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+INSERT INTO `usuarios` VALUES (1, 'usuario1', '$2y$10$hGKwShUYS8zerpZO8deD2OjPvmalxdL.M9FDsflunJ5V.FjSORl7y');
+
+--
+-- Indices de la tabla `categorias`
+--
+ALTER TABLE `categorias`
+  ADD PRIMARY KEY (`id_categoria`);
+	
+	--
+-- Indices de la tabla `colores`
+--
+ALTER TABLE `colores`
+  ADD PRIMARY KEY (`id_color`);
+	
+	--
+-- Indices de la tabla `productos`
+--
+ALTER TABLE `productos`
+  ADD PRIMARY KEY (`id_producto`),
+  ADD KEY `FK_productos_1` (`id_color`),
+  ADD KEY `FK_productos_2` (`id_categoria`);
+	
+ALTER TABLE `categorias`
+  MODIFY `id_categoria` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+	
+	--
+-- AUTO_INCREMENT de la tabla `colores`
+--
+ALTER TABLE `colores`
+  MODIFY `id_color` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+	
+	--
+-- Filtros para la tabla `productos`
+--
+ALTER TABLE `productos`
+  ADD CONSTRAINT `FK_productos_1` FOREIGN KEY (`id_color`) REFERENCES `colores` (`id_color`) ON DELETE SET NULL ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK_productos_2` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id_categoria`) ON DELETE SET NULL ON UPDATE CASCADE;
+	
